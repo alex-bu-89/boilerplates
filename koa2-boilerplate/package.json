@@ -12,7 +12,10 @@
   "author": "Alexander Buyanov",
   "license": "MIT",
   "dependencies": {
-    "koa": "^2.5.1"
+    "config": "^1.30.0",
+    "kcors": "^2.2.1",
+    "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.1"
   },
   "devDependencies": {
     "nodemon": "^1.17.5"
