@@ -1,0 +1,22 @@
+elasticsearch:
+  image: docker.elastic.co/elasticsearch/elasticsearch:5.6.6
+  environment:
+    xpack.security.enabled: "false"
+  ports:
+  - 9200:9200
+logstash:
+  image: logstash:latest
+  links:
+  - elasticsearch:elasticsearch
+  ports:
+  - 12201:12201/udp
+  - 12202:12202
+  command: logstash -e 'input { gelf { port => "12201" } log4j { mode => "server" port => "12202"} } output { elasticsearch { hosts => ["elasticsearch"] } }'
+kibana:
+  image: kibana
+  links:
+  - elasticsearch:elasticsearch
+  ports:
+  - 5601:5601
+  environment:
+  - ELASTICSEARCH_URL=http://elasticsearch:9200
