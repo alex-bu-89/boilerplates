@@ -23,9 +23,7 @@
     "errorhandler": "^1.5.1",
     "express": "^4.17.1",
     "helmet": "^3.21.1",
-    "log4js": "^5.1.0",
-    "mysql2": "^1.7.0",
-    "sequelize": "^5.19.0"
+    "log4js": "^5.1.0"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.27",
