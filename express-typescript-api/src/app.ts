@@ -5,6 +5,7 @@ import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 import errorHandler from 'errorhandler';
+import mongoose from 'mongoose';
 
 // Import controllers (route handlers)
 import * as indexController from './controllers/';
@@ -23,9 +24,16 @@ app.use(helmet());
 app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
 if (config.get('env') !== 'production') {
 	app.use(errorHandler()); // Error Handler. Provides full stack
 }
+
+// DB Connection
+mongoose.connect(
+	`${config.get('db.host')}/${config.get('db.name')}`,
+	{ useNewUrlParser: true, useUnifiedTopology: true }
+);
 
 // Check db connection
 // @TODO
