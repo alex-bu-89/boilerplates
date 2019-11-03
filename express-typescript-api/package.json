@@ -8,11 +8,11 @@
   },
   "homepage": "git@github.com:alex-bu-89/boilerplates.git",
   "scripts": {
-    "start": "npm run build:watch && wait-on dist && npm run start:dev",
+    "start": "npm run build:dev && wait-on dist/index.js && npm run start:dev",
     "start:dev": "cross-env NODE_ENV=development nodemon dist",
-    "start:prod": "npm run build:prod && node dist",
+    "start:prod": "cross-env NODE_ENV=production npm run build:prod && node dist",
+    "build:dev": "npm run build:clean && tsc -w &",
     "build:prod": "tsc",
-    "build:watch": "npm run build:clean && tsc -w &",
     "build:clean": "rimraf -rf dist"
   },
   "dependencies": {
