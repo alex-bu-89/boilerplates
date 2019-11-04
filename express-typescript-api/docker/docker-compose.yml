@@ -11,10 +11,13 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=admin
     volumes:
-      - ./mongodb:/data/db
+      - mongodb:/data/db
     networks:
       - mongo_net
 
 networks:
   mongo_net:
     driver: bridge
+
+volumes:
+  mongodb:
