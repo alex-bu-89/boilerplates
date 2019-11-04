@@ -35,8 +35,6 @@ mongoose.connect(
 	{ useNewUrlParser: true, useUnifiedTopology: true }
 );
 
-// Check db connection
-// @TODO
 
 // Primary app routes.
 app.get(`/`, indexController.index);
