@@ -24,10 +24,10 @@ mongoose
 	.connect(
 		`${config.get('db.host')}/${config.get('db.name')}`,
 		{ useNewUrlParser: true, useUnifiedTopology: true }
-	).catch((error) => { throw new Error(error); });
+	).catch((error) => { logger.error(error); });
 
 mongoose.connection.on('error', (error) => {
-	throw new Error(error);
+	logger.error(error);
 });
 
 // Express configuration
