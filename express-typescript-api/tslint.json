@@ -9,7 +9,7 @@
             true,
             "check-space"
         ],
-        "indent": [true, "tabs", 2],
+        "indent": [true, "tabs", 4],
         "no-duplicate-variable": true,
         "no-eval": true,
         "no-internal-module": true,
