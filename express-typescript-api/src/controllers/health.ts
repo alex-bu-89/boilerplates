@@ -2,8 +2,8 @@ import { Request, Response } from 'express';
 
 /**
  * GET /
- * Home page.
+ * Healthcheck route
  */
-export const index = (req: Request, res: Response) => {
+export function index(req: Request, res: Response) {
 	res.json({ status: 'OK' });
-};
+}

@@ -3,11 +3,11 @@ import { Request, Response } from 'express';
 
 /**
  * GET /
- * Home page.
+ * Index route
  */
-export const index = (req: Request, res: Response) => {
+export function index(req: Request, res: Response) {
 	res.json({
 		message: `Service ${config.get('serviceName')} is running`,
 		status: 200
 	});
-};
+}
