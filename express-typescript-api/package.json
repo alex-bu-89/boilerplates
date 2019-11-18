@@ -10,7 +10,8 @@
   "scripts": {
     "start": "npm run build:dev && wait-on dist/index.js && npm run start:dev",
     "start:dev": "cross-env NODE_ENV=development nodemon dist",
-    "start:prod": "cross-env NODE_ENV=production npm run build:prod && node dist",
+    "start:prod": "cross-env NODE_ENV=production npm run build:prod && npm run start:pm2",
+    "start:pm2": "pm2 start dist",
     "build:dev": "npm run build:clean && tsc -w &",
     "build:prod": "tsc",
     "build:clean": "rimraf -rf dist"
@@ -38,6 +39,7 @@
     "@types/validator": "^10.11.3",
     "cross-env": "^6.0.3",
     "nodemon": "^1.19.4",
+    "pm2": "^4.1.2",
     "rimraf": "^3.0.0",
     "tslint": "^5.20.0",
     "typescript": "^3.6.4",
