@@ -1,48 +1,48 @@
 {
-  "name": "express-typescript-boilerplate",
-  "version": "0.0.1",
-  "author": "Alex Buyanov <alex.bu.89@gmail.com>",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:alex-bu-89/boilerplates.git"
-  },
-  "homepage": "git@github.com:alex-bu-89/boilerplates.git",
-  "scripts": {
-    "start": "npm run build:dev && wait-on dist/index.js && npm run start:dev",
-    "start:dev": "cross-env NODE_ENV=development nodemon dist",
-    "start:prod": "cross-env NODE_ENV=production npm run build:prod && npm run start:pm2",
-    "start:pm2": "pm2 start dist",
-    "build:dev": "npm run build:clean && tsc -w &",
-    "build:prod": "tsc",
-    "build:clean": "rimraf -rf dist"
-  },
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "compression": "^1.7.4",
-    "config": "^3.2.4",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "helmet": "^3.21.2",
-    "log4js": "^5.3.0",
-    "mongoose": "^5.7.7"
-  },
-  "devDependencies": {
-    "@types/bluebird": "^3.5.28",
-    "@types/compression": "^1.0.1",
-    "@types/config": "0.0.35",
-    "@types/cors": "^2.8.6",
-    "@types/express": "^4.17.2",
-    "@types/helmet": "0.0.45",
-    "@types/log4js": "^2.3.5",
-    "@types/mongoose": "^5.5.28",
-    "@types/node": "^12.12.5",
-    "@types/validator": "^10.11.3",
-    "cross-env": "^6.0.3",
-    "nodemon": "^1.19.4",
-    "pm2": "^4.1.2",
-    "rimraf": "^3.0.0",
-    "tslint": "^5.20.0",
-    "typescript": "^3.6.4",
-    "wait-on": "^3.3.0"
-  }
+	"name": "express-typescript-boilerplate",
+	"version": "0.0.1",
+	"author": "Alex Buyanov <alex.bu.89@gmail.com>",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:alex-bu-89/boilerplates.git"
+	},
+	"homepage": "git@github.com:alex-bu-89/boilerplates.git",
+	"scripts": {
+		"start": "npm run build:dev && wait-on dist/index.js && npm run start:dev",
+		"start:dev": "cross-env NODE_ENV=development nodemon dist",
+		"start:prod": "cross-env NODE_ENV=production npm run build:prod && npm run start:pm2",
+		"start:pm2": "pm2 start dist",
+		"build:dev": "npm run build:clean && tsc -w &",
+		"build:prod": "tsc",
+		"build:clean": "rimraf -rf dist"
+	},
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"compression": "^1.7.4",
+		"config": "^3.2.4",
+		"cors": "^2.8.5",
+		"express": "^4.17.1",
+		"helmet": "^3.21.2",
+		"log4js": "^5.3.0",
+		"mongoose": "^5.7.7"
+	},
+	"devDependencies": {
+		"@types/bluebird": "^3.5.28",
+		"@types/compression": "^1.0.1",
+		"@types/config": "0.0.35",
+		"@types/cors": "^2.8.6",
+		"@types/express": "^4.17.2",
+		"@types/helmet": "0.0.45",
+		"@types/log4js": "^2.3.5",
+		"@types/mongoose": "^5.5.28",
+		"@types/node": "^12.12.5",
+		"@types/validator": "^10.11.3",
+		"cross-env": "^6.0.3",
+		"nodemon": "^1.19.4",
+		"pm2": "^4.1.2",
+		"rimraf": "^3.0.0",
+		"tslint": "^5.20.0",
+		"typescript": "^3.6.4",
+		"wait-on": "^3.3.0"
+	}
 }
