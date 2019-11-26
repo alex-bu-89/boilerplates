@@ -7,7 +7,7 @@ import helmet from 'helmet';
 import mongoose from 'mongoose';
 
 // Import controllers (route handlers)
-import apiRoutes from './routes/';
+import apiRoutes from './routes/api';
 
 // Import controllers (route handlers)
 import * as indexController from './controllers/';
@@ -42,14 +42,12 @@ app.use(compression());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Primary app routes.
-app.get(`/`, indexController.index);
-app.get(`/health`, healthController.index);
-
 // API routes
-router.all('/api/*', apiRoutes);
+router.get('/', indexController.index);
+router.get('/health', healthController.index);
+router.use('/api/v1', apiRoutes);
 
-// Error handling
+app.use('/', router);
 app.use(errorHandler);
 
 export default app;
