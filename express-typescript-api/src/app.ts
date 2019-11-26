@@ -1,10 +1,13 @@
+import express from 'express';
 import config from 'config';
 import bodyParser from 'body-parser';
 import compression from 'compression';
 import cors from 'cors';
-import express from 'express';
 import helmet from 'helmet';
 import mongoose from 'mongoose';
+
+// Import controllers (route handlers)
+import apiRoutes from './routes/';
 
 // Import controllers (route handlers)
 import * as indexController from './controllers/';
@@ -16,8 +19,9 @@ import errorHandler from './middlewares/error';
 // Import middlelayers
 import logger from './services/logger';
 
-// Create Express server
+// Init express
 const app = express();
+const router = express.Router();
 
 // DB Connection
 mongoose
@@ -41,6 +45,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Primary app routes.
 app.get(`/`, indexController.index);
 app.get(`/health`, healthController.index);
+
+// API routes
+router.all('/api/*', apiRoutes);
 
 // Error handling
 app.use(errorHandler);
