@@ -7,7 +7,7 @@ import helmet from 'helmet';
 import mongoose from 'mongoose';
 
 // Import controllers (route handlers)
-import apiRoutes from './routes/api';
+import apiRoutes from './routes/api.route';
 
 // Import controllers (route handlers)
 import * as indexController from './controllers/';
@@ -28,9 +28,9 @@ mongoose
 	.connect(
 		`${config.get('db.host')}/${config.get('db.name')}`,
 		{ useNewUrlParser: true, useUnifiedTopology: true }
-	).catch((error) => { logger.error(error); });
+	).catch((error: any) => { logger.error(error); });
 
-mongoose.connection.on('error', (error) => {
+mongoose.connection.on('error', (error: any) => {
 	logger.error(error);
 });
 
