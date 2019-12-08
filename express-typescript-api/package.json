@@ -8,6 +8,7 @@
 	},
 	"homepage": "git@github.com:alex-bu-89/boilerplates.git",
 	"scripts": {
+		"prestart": "ncu",
 		"start": "npm run build:dev && wait-on dist/index.js && npm run start:dev",
 		"start:dev": "cross-env NODE_ENV=development nodemon dist",
 		"start:prod": "cross-env NODE_ENV=production npm run build:prod && npm run start:pm2",
@@ -39,6 +40,7 @@
 		"@types/validator": "^10.11.3",
 		"cross-env": "^6.0.3",
 		"nodemon": "^1.19.4",
+		"npm-check-updates": "^3.2.2",
 		"pm2": "^4.1.2",
 		"rimraf": "^3.0.0",
 		"tslint": "^5.20.0",
