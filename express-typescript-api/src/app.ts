@@ -10,11 +10,11 @@ import mongoose from 'mongoose';
 import apiRoutes from './routes/api.route';
 
 // Import controllers (route handlers)
-import * as indexController from './controllers/';
-import * as healthController from './controllers/health';
+import * as indexController from './controllers/index.controller';
+import * as healthController from './controllers/health.controller';
 
 // Import services
-import errorHandler from './middlewares/error';
+import errorHandler from './middlewares/error.middleware';
 
 // Import middlelayers
 import logger from './services/logger';
@@ -23,7 +23,7 @@ import logger from './services/logger';
 const app = express();
 const router = express.Router();
 
-// DB Connection
+// Mongodb connection
 mongoose
 	.connect(
 		`${config.get('db.host')}/${config.get('db.name')}`,
