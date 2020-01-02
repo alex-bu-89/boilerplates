@@ -28,7 +28,7 @@ mongoose
 	.connect(
 		`${config.get('db.host')}/${config.get('db.name')}`,
 		{ useNewUrlParser: true, useUnifiedTopology: true }
-	).catch((error: any) => { logger.error(error); });
+	);
 
 mongoose.connection.on('error', (error: any) => {
 	logger.error(error);
