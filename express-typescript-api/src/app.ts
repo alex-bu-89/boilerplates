@@ -24,11 +24,10 @@ const app = express();
 const router = express.Router();
 
 // Mongodb connection
-mongoose
-	.connect(
-		`${config.get('db.host')}/${config.get('db.name')}`,
-		{ useNewUrlParser: true, useUnifiedTopology: true }
-	);
+mongoose.connect(
+	`${config.get('db.host')}/${config.get('db.name')}`,
+	{ useNewUrlParser: true, useUnifiedTopology: true }
+);
 
 mongoose.connection.on('error', (error: any) => {
 	logger.error(error);
