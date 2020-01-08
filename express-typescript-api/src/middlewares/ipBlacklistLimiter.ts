@@ -52,4 +52,5 @@ export function ipBlackListMiddleware(req, res, next) {
 }
 
 IP_BLACKLIST.length > 0 && logger.info('IP blacklist ' + JSON.stringify(IP_BLACKLIST));
+
 export default ipBlackListMiddleware;
