@@ -14,7 +14,7 @@ import * as indexController from './controllers/index.controller';
 import * as healthController from './controllers/health.controller';
 
 // Import services
-import errorHandler from './middlewares/error.middleware';
+import errorHandler from './middlewares/errorHandler';
 
 // Import middlelayers
 import logger from './services/logger';

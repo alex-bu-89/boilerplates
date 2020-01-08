@@ -17,6 +17,7 @@ process.env.hasOwnProperty('IP_BLACKLIST') &&
 const rateLimiter = new RLWrapperBlackAndWhite({
 	limiter: new RateLimiterMemory({
 		keyPrefix: 'middleware',
+		blockDuration: 60 * 60 * 24,
 	}),
 	blackList: IP_BLACKLIST,
 	runActionAnyway: false,
