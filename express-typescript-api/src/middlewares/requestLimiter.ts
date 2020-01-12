@@ -1,9 +1,15 @@
 import express from 'express';
+import logger from '../services/logger';
 import { RateLimiterMemory, RLWrapperBlackAndWhite } from 'rate-limiter-flexible';
 
 // IP black list
 const IP_BLACKLIST: string[] = [];
-IP_BLACKLIST.length > 0 && logger.info('IP blacklist ' + JSON.stringify(IP_BLACKLIST));
+
+// add ips to black list from env variable
+if (process.env?.IP_BLACKLIST?.length > 0) {
+	process.env.IP_BLACKLIST.split(',').forEach((ip) => IP_BLACKLIST.push(ip));
+	logger.info('IP blacklist ' + JSON.stringify(IP_BLACKLIST));
+}
 
 // wrapped rate limiter instance
 const rateLimiter = new RLWrapperBlackAndWhite({
@@ -39,6 +45,5 @@ export function requestLimiter(req: express.Request, res: express.Response, next
 			next(err);
 		});
 }
-
 
 export default requestLimiter;
