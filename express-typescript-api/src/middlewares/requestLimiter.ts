@@ -1,8 +1,9 @@
 import express from 'express';
 import { RateLimiterMemory, RLWrapperBlackAndWhite } from 'rate-limiter-flexible';
 
-// blocked IPs
+// IP black list
 const IP_BLACKLIST: string[] = [];
+IP_BLACKLIST.length > 0 && logger.info('IP blacklist ' + JSON.stringify(IP_BLACKLIST));
 
 // wrapped rate limiter instance
 const rateLimiter = new RLWrapperBlackAndWhite({
@@ -38,5 +39,6 @@ export function requestLimiter(req: express.Request, res: express.Response, next
 			next(err);
 		});
 }
+
 
 export default requestLimiter;
