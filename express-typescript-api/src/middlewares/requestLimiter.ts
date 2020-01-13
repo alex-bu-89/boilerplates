@@ -15,8 +15,6 @@ if (process.env?.IP_BLACKLIST?.length > 0) {
 const rateLimiter = new RLWrapperBlackAndWhite({
 	limiter: new RateLimiterMemory({
 		keyPrefix: 'middleware',
-		// points: 300, // 300 requests
-		// duration: 60, // per 1 minutes by IP
 		blockDuration: 60 * 60 * 24, // block for 1 day
 	}),
 	blackList: IP_BLACKLIST,
