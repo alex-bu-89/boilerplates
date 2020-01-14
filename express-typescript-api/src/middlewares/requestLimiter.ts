@@ -1,6 +1,7 @@
 import express from 'express';
-import logger from '../services/logger';
 import { RateLimiterMemory, RLWrapperBlackAndWhite } from 'rate-limiter-flexible';
+import logger from '../services/logger';
+import utils from '../helpers/utils';
 
 // IP black list
 const IP_BLACKLIST: string[] = [];
@@ -29,10 +30,7 @@ const rateLimiter = new RLWrapperBlackAndWhite({
  * @param {*} rateLimiter rate-limiter-flexible instance
  */
 export function requestLimiter(req: express.Request, res: express.Response, next: express.NextFunction) {
-	const forwarded: string = req.headers['x-forwarded-for'] as string;
-	const ip: string = forwarded
-		? forwarded.split(/, /)[0]
-		: req.connection.remoteAddress;
+	const ip: string = utils.getIp(req);
 
 	rateLimiter.consume(ip)
 		.then(() => {
