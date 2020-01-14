@@ -15,10 +15,10 @@ if (process.env?.IP_BLACKLIST?.length > 0) {
 const rateLimiter = new RLWrapperBlackAndWhite({
 	limiter: new RateLimiterMemory({
 		keyPrefix: 'middleware',
-		blockDuration: 60 * 60 * 24, // block for 1 day
+		blockDuration: 60 * 60 * 24 // block for 1 day
 	}),
 	blackList: IP_BLACKLIST,
-	runActionAnyway: false,
+	runActionAnyway: false
 });
 
 /**
@@ -35,12 +35,14 @@ export function requestLimiter(req: express.Request, res: express.Response, next
 		: req.connection.remoteAddress;
 
 	rateLimiter.consume(ip)
-		.then(() => next())
+		.then(() => {
+			return next();
+		})
 		.catch((err: any) => {
 			err.status = 429;
 			err.message = `Request rejected: ${ip}`;
 
-			next(err);
+			return next(err);
 		});
 }
 
