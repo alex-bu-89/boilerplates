@@ -1,3 +1,7 @@
+import dotenv from 'dotenv';
+import { resolve } from 'path';
+dotenv.config({ path: resolve(__dirname, '../.env') });
+
 import config from 'config';
 import logger from './services/logger';
 import app from './app';
