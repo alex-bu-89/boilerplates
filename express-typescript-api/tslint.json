@@ -86,6 +86,7 @@
 			true,
 			"parameters",
 			"statements"
-		]
+        ],
+        "no-any": true
 	}
 }
