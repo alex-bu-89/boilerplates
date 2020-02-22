@@ -4,7 +4,7 @@ dotenv.config({ path: resolve(__dirname, '../.env') });
 
 import config from 'config';
 import logger from './services/logger';
-import app from './app';
+import app from './server';
 
 /**
  * Start Express server.
