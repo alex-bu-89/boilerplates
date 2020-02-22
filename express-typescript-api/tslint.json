@@ -87,6 +87,6 @@
 			"parameters",
 			"statements"
         ],
-        "no-any": true
+        "no-any": [true, {"ignore-rest-args": true}]
 	}
 }
