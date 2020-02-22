@@ -1,28 +1,28 @@
-import express from "express";
+import express from 'express';
 import {
-	RateLimiterMemory,
-	RLWrapperBlackAndWhite
-} from "rate-limiter-flexible";
-import logger from "../services/logger";
-import utils from "../helpers/utils";
+    RateLimiterMemory,
+    RLWrapperBlackAndWhite
+} from 'rate-limiter-flexible';
+import logger from '../utils/logger';
+import utils from '../helpers/utils';
 
 // IP black list
 const IP_BLACKLIST: string[] = [];
 
 // add ips to black list from env variable
 if (process.env?.IP_BLACKLIST?.length > 0) {
-	process.env.IP_BLACKLIST.split(",").forEach(ip => IP_BLACKLIST.push(ip));
-	logger.info("IP blacklist " + JSON.stringify(IP_BLACKLIST));
+    process.env.IP_BLACKLIST.split(',').forEach(ip => IP_BLACKLIST.push(ip));
+    logger.info('IP blacklist ' + JSON.stringify(IP_BLACKLIST));
 }
 
 // wrapped rate limiter instance
 const rateLimiter = new RLWrapperBlackAndWhite({
-	limiter: new RateLimiterMemory({
-		keyPrefix: "middleware",
-		blockDuration: 60 * 60 * 24 // block for 1 day
-	}),
-	blackList: IP_BLACKLIST,
-	runActionAnyway: false
+    limiter: new RateLimiterMemory({
+        keyPrefix: 'middleware',
+        blockDuration: 60 * 60 * 24 // block for 1 day
+    }),
+    blackList: IP_BLACKLIST,
+    runActionAnyway: false
 });
 
 /**
@@ -33,23 +33,23 @@ const rateLimiter = new RLWrapperBlackAndWhite({
  * @param {*} rateLimiter rate-limiter-flexible instance
  */
 export function requestLimiter(
-	req: express.Request,
-	res: express.Response,
-	next: express.NextFunction
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction
 ) {
-	const ip: string = utils.getIp(req);
+    const ip: string = utils.getIp(req);
 
-	rateLimiter
-		.consume(ip)
-		.then(() => {
-			return next();
-		})
-		.catch((err: any) => {
-			err.status = 429;
-			err.message = `Request rejected: ${ip}`;
+    rateLimiter
+        .consume(ip)
+        .then(() => {
+            return next();
+        })
+        .catch((err: any) => {
+            err.status = 429;
+            err.message = `Request rejected: ${ip}`;
 
-			return next(err);
-		});
+            return next(err);
+        });
 }
 
 export default requestLimiter;

@@ -11,7 +11,7 @@
 		],
 		"indent": [
 			true,
-			"tabs",
+			"space",
 			4
 		],
 		"no-duplicate-variable": true,
@@ -80,10 +80,7 @@
 		"eofline": true,
 		"trailing-comma": [
 			true,
-			{
-				"singleline": "never",
-				"multiline": "never"
-			}
+			"always"
 		],
 		"align": [
 			true,

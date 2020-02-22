@@ -7,7 +7,7 @@ import helmet from 'helmet';
 import mongoose from 'mongoose';
 
 // Import controllers (route handlers)
-import apiRoutes from './routes/api.route';
+import apiRouter from './router';
 
 // Import controllers (route handlers)
 import * as indexController from './controllers/index.controller';
@@ -17,7 +17,7 @@ import * as healthController from './controllers/health.controller';
 import errorHandler from './middlewares/errorHandler';
 
 // Import middlelayers
-import logger from './services/logger';
+import logger from './utils/logger';
 
 // Init express
 const app = express();
@@ -44,7 +44,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // API routes
 router.get('/', indexController.index);
 router.get('/health', healthController.index);
-router.use('/api/v1', apiRoutes);
+router.use('/v1', apiRouter);
 
 app.use('/', router);
 app.use(errorHandler);
