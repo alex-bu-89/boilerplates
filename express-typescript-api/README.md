@@ -5,8 +5,9 @@ https://github.com/sahat/hackathon-starter
 --- 
 
 TODO: 
-- Add linter / prettier
-- Add mongodb dockerfile
+- CRUD
+- Graphql api
+- Postgres / Mongo api
 - Add API authentication / authorization
   - Research API authentication / authorization
   - Add User model

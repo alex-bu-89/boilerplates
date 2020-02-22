@@ -4,7 +4,7 @@ import {
     RLWrapperBlackAndWhite
 } from 'rate-limiter-flexible';
 import logger from '../utils/logger';
-import utils from '../helpers/utils';
+import utils from '../utils/utils';
 
 // IP black list
 const IP_BLACKLIST: string[] = [];

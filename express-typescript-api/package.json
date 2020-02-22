@@ -1,7 +1,7 @@
 {
 	"name": "express-typescript-boilerplate",
 	"version": "0.0.1",
-	"author": "Alex Buyanov <alex.bu.89@gmail.com>",
+	"author": "Alexander Buyanov <alex.bu.89@gmail.com>",
 	"repository": {
 		"type": "git",
 		"url": "git@github.com:alex-bu-89/boilerplates.git"

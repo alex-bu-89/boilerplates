@@ -10,8 +10,8 @@ import mongoose from 'mongoose';
 import apiRouter from './router';
 
 // Import controllers (route handlers)
-import * as indexController from './controllers/index.controller';
-import * as healthController from './controllers/health.controller';
+import * as indexController from './controllers/indexController';
+import * as healthController from './controllers/healthController';
 
 // Import services
 import errorHandler from './middlewares/errorHandler';
