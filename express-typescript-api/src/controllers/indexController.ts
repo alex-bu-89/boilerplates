@@ -11,3 +11,7 @@ export function index(req: Request, res: Response) {
 		status: 200
 	});
 }
+
+export default {
+    index
+}
