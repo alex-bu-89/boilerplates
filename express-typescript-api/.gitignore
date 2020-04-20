@@ -1,10 +1,9 @@
 node_modules/
 .vscode
 .cache/
-public/
 dist/
 deploy/
 *.marko.js
-.env.example
 .logs/*.log
 .env
+.DS_Store
